@@ -1,0 +1,10 @@
+<!--pages/take/beizhu/beizhu.wxml-->
+<view class="box3 content">
+  <view class="aaa">
+    <text>备注</text>
+  </view>
+  <view class="section">
+  <textarea bindinput="bindTextAreaBlur" auto-height placeholder="说点什么" />
+</view>
+</view>
+<button bindtap="onshw">确定</button>

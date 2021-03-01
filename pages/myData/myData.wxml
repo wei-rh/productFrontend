@@ -1,0 +1,15 @@
+<!--pages/myData/myData.wxml-->
+<view class=" top"></view>
+
+<view class="containers">
+  <view class="img-text">
+    <image src="{{userInfo==null?'../image/点击登录.png':userInfo.avatarUrl}}" class="userinfo-avatar" mode="cover"></image>
+    <view class="userinfo-nickname">{{userInfo==null?'默认用户':userInfo.nickName}}</view>
+  </view>
+  <navigator hover-class="none" class="gongneng" url="">我的地址</navigator>
+  <navigator hover-class="none" class="gongneng" url="../orders/orders">我的订单</navigator>
+  <navigator hover-class="none" class="gongneng" url="">我的优惠劵</navigator>
+  <navigator hover-class="none" class="gongneng" url="">用户指南</navigator>
+  <navigator hover-class="none" class="gongneng" url="">联系客服</navigator>
+  <navigator hover-class="none" class="gongneng" url="">填写邀请码</navigator>
+</view>

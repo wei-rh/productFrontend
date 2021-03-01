@@ -1,0 +1,37 @@
+/* pages/myData/myData.wxss */
+.top{
+  box-shadow: 0 0px 3px 4px #f4f4f4;
+  height: 1rpx;
+}
+
+.containers{
+  padding-left: 30rpx;
+}
+
+
+.img-text{
+  height: 128rpx;
+  margin:20rpx 0;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  float: left;
+}
+
+.userinfo-nickname {
+  line-height: 128rpx;
+  color: #000;
+  /* font-size: 12rpx; */
+  font-weight: 700;
+  margin-left: 150rpx;
+  line-height: 128rpx;
+}
+
+.gongneng{
+  margin: 50rpx 0;
+  height: 70rpx;
+  line-height: 70rpx;
+}

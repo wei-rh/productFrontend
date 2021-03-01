@@ -1,0 +1,180 @@
+/* pages/take/take.wxss */
+text {
+  color: #666666;
+  font-size: 38rpx;
+}
+
+input {
+  color: #000;
+
+}
+
+.content {
+  width: 90%;
+  box-shadow: 0 0px 2px 2px #f4f4f4;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  border-radius: 5%;
+  padding-left: 30rpx;
+}
+
+
+.box1 {
+  height: 400rpx;
+}
+
+.text1 {
+  height: 200rpx;
+  /* border-bottom: 1rpx solid #000; */
+}
+
+.t1 {
+  height: 50rpx;
+  padding-left: 100rpx;
+  /* background-color: blue; */
+}
+
+.tops {
+  height: 25rpx;
+}
+
+.tops1 {
+  height: 25rpx;
+  width: 75%;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #e9e9eb;
+}
+
+.t2 {
+  height: 50rpx;
+  display: flex;
+  justify-content:space-between
+  /* flex-direction: row */
+}
+
+.fa {
+  width: 70rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 40rpx;
+  color: #f4f4f4;
+  background-color: #008cff;
+  border-radius: 50%;
+  /* margin: auto 0; */
+  /* float: left; */
+
+}
+
+.dizhi {
+  margin-left: -75rpx;
+  color: #666666;
+}
+
+.changyong {
+  margin: auto 0;
+  height: 40rpx;
+  color: #008cff;
+  font-size: 30rpx;
+  border-left: 1rpx solid #e9e9eb;
+  padding-left: 20rpx;
+  margin-right: 30rpx;
+}
+
+.song {
+  width: 70rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 40rpx;
+  color: #f4f4f4;
+  background-color: #00cb83;
+  border-radius: 50%;
+}
+
+.hr {
+  width: 70%;
+  margin: 0 auto;
+  border: 1rpx solid #000;
+}
+
+
+
+
+
+.box2 {
+  height: 120rpx;
+  line-height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* 弹窗内容 */
+.cont {
+  padding: 0 20rpx;
+}
+
+.cont-top {
+  display: flex;
+  justify-content : space-between;
+  height: 125rpx;
+  line-height: 125rpx;
+  border-bottom: 1rpx solid #666666;
+}
+.cont-box1{
+  padding-top: 10rpx;
+}
+.boxs{
+  display: flex;
+  justify-content : space-between;
+  flex-wrap:wrap
+}
+.box{
+  width: 200rpx;
+  height: 76rpx;
+  border: 1rpx solid #666;
+  border-radius: 15rpx;
+  margin-top: 25rpx;
+  line-height: 76rpx;
+  text-align: center;
+}
+.active {
+  border: 1rpx solid #ff8b02;
+  background-color: #fef1e0;
+  color: #e68f28;
+}
+
+.cont-box2{
+  margin-bottom: 30rpx;
+}
+
+
+.box3{
+  height: 300rpx;
+  padding-bottom: 50rpx;
+}
+.aaa{
+  height: 100rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  line-height: 100rpx;
+  display: flex;
+  justify-content : space-between;
+  
+}
+
+.input-right{
+  /* width:270rpx; */
+  margin:auto 0
+}
+.box4{
+  height: 150rpx;
+  padding-bottom: 50rpx;
+}
+.bbb{
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  justify-content : space-between;
+  
+}

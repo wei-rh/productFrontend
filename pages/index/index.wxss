@@ -1,0 +1,111 @@
+page{
+  background-color: #f8f8f8;
+}
+
+swiper {
+display: block;
+height: 466rpx;
+}
+.slide-image {
+width: 100%;
+height: 100%;
+display: inline-block;
+overflow: hidden;
+}
+.block{
+  margin: 20rpx auto;
+  border-radius: 16px;
+  width: 700rpx;
+  height: 200rpx;
+  background: #ffffff; 
+}
+.nav{
+  margin-top: 23rpx;
+  margin-left: 62rpx;
+  width: 150rpx;
+  height: 150rpx;
+  float: left;
+}
+.nav-img{
+  margin-left: 25rpx;
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  overflow: hidden;
+}
+.nav-text {
+  height: 50rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+
+
+
+  .notice{
+  display: flex;
+  justify-content: space-between;  
+  flex-wrap:wrap;
+  height: 80rpx;
+  line-height: 80rpx;
+  /* margin-top: 130rpx; */
+  background-color: #fff;
+  border-bottom: 1rpx solid #efeff4;
+}
+.notice_icon {
+  margin-top: 25rpx;
+  margin-left:20rpx;
+  width:40rpx;
+  height:40rpx;
+}
+.swiper_container {
+  height: 71rpx;
+  width: 88vw;
+}
+
+
+
+
+
+/* 所有功能 */
+.cont{
+  /* padding: 10rpx 0; */
+  padding-top: 10rpx;
+  padding-bottom: 50rpx;
+  background-color: #fff;
+}
+.box{
+  height: 160rpx;
+  margin:20rpx 0;
+}
+.box-div{
+  border-radius: 15rpx;
+  border: 3rpx solid #f6f6f6;
+  width: 345rpx;
+  height: 158rpx;
+  margin-left: 20rpx;
+  float: left;
+}
+.box-div-1{
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  font-size: 35rpx;
+  color: #383838;
+  font-weight: 800;
+
+}
+.box-div-2{
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  color: #9b9b9b; 
+  font-weight: 500;
+}
+.slide-images{
+width: 100%;
+height: 100%;
+display: inline-block;
+overflow: hidden;
+border-radius: 50%;
+}

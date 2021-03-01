@@ -1,0 +1,24 @@
+/* pages/take/dizhi/dizhi.wxss */
+.content {
+  width: 90%;
+  box-shadow: 0 0px 2px 2px #f4f4f4;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  border-radius: 5%;
+  padding-left: 30rpx;
+}
+.box3{
+  height: 300rpx;
+  padding-bottom: 50rpx;
+}
+.aaa{
+  height: 100rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  line-height: 100rpx;
+  display: flex;
+  flex-direction:row;
+}
+input{
+  margin: auto 0;
+  margin-left:50rpx;
+}

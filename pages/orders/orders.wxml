@@ -1,0 +1,10 @@
+<!--pages/order/orders.wxml-->
+<view class="top-nav">
+  <view class="top-nav-bar">
+    <view class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">全部</view>
+    <view class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">待付款</view>
+    <view class="{{current == 2 ? 'active' : ''}}" catchtap="switchSlider" data-index="2">待派送</view>
+    <view class="{{current == 3 ? 'active' : ''}}" catchtap="switchSlider" data-index="3">待收货</view>
+    <view class="{{current == 4 ? 'active' : ''}}" catchtap="switchSlider" data-index="4">待评价</view>
+  </view>
+</view>

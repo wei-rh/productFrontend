@@ -1,0 +1,87 @@
+<!--pages/take/take.wxml-->
+
+<view class="box1 content">
+  <navigator hover-class="none" url="/pages/take/dizhi/dizhi?id=1" class="text1" >
+    <view class="tops"></view>
+    <view class="t1">
+      <input disabled="true" type="text" value="{{fadata.name}}" />
+    </view>
+    <view class="t2">
+      <view class="fa">发</view>
+      <input disabled="true" type="text" class="dizhi" placeholder="从哪里取货？" placeholder-style="color:#000" value="{{fadata.dizhi}}"/>
+      <navigator hover-class="none" class="changyong">常用</navigator>
+    </view>
+    <view class="t1">
+      <input disabled="true" type="text" placeholder="点击填写取货信息" placeholder-style="font-size:30rpx" value="{{fadata.tel}}"/>
+    </view>
+  </navigator>
+  <navigator hover-class="none" url="/pages/take/dizhi/dizhi?id=2" class="text1">
+    <view class="tops1"></view>
+    <view class="t1">
+      <input disabled="true" type="text" value="{{songdata.name}}" />
+    </view>
+    <view class="t2">
+      <view class="song">送</view>
+      <input disabled="true" type="text" class="dizhi" placeholder="要送到哪里？" placeholder-style="color:#000" value="{{songdata.dizhi}}"/>
+      <navigator hover-class="none" class="changyong">常用</navigator>
+    </view>
+    <view class="t1">
+      <input disabled="true" type="text" placeholder="点击填写收获信息" placeholder-style="font-size:30rpx" value="{{songdata.name}}"/>
+    </view>
+  </navigator>
+</view>
+
+<view class="box2 content" bindtap="onChoice">
+  <text>物品信息</text>
+  <text space="ensp" style="font-size:30rpx;color:#999999">{{goodText==""?"点击选择物品信息":goodText}} > </text>
+</view>
+<view class="box2 content">
+  <text>下单时间</text>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <text space="ensp" style="font-size:30rpx;color:#999999">{{choose_year==''?'立即送出':choose_year}} > </text>
+  </picker>
+</view>
+
+<view class="box3 content">
+  <view class="aaa">
+    <text>优惠金额</text>
+    <text space="ensp" style="font-size:30rpx;color:#999999">暂无可用优惠卷 > </text>
+  </view>
+  <view class="aaa">
+    <text>订单保价</text>
+    <input type="number" class="input-right" placeholder="贵重物品建议保价/元 > " placeholder-style="font-size:30rpx;color:#999999;"
+    style="width:317rpx;margin:auto 0"  bindinput='onBaojia'/>
+  </view>
+  <view class="aaa">
+    <text>订单备注</text>
+    <text space="ensp" style="font-size:30rpx;color:#999999" bindtap="onBeizhu">{{beizhu==""?'备注说点什么 > ':beizhu}}</text>
+  </view>
+</view>
+
+<van-action-sheet show="{{ show }}" bind:close="onClose">
+  <view class="cont">
+    <view class="cont-top">
+      <view style="color:#666" bindtap="onClose">取消</view>
+      <view>物品类型</view>
+      <view style="color:#ff8b02" bindtap="onSure">确定</view>
+    </view>
+    <view class="cont-box1">
+      <view>物品类型</view>
+      <view class="boxs">
+        <block wx:for="{{goods}}" wx:key="index">
+          <view class="box {{goodid==index?'active':''}}" data-id='{{index}}' bindtap='radioButtonTap'>{{item}}</view>
+        </block>
+      </view>
+    </view>
+    <view class="cont-box2">
+      <view style="margin-top:20rpx">物品规格</view>
+      <view style="font-size:25rpx;color:#c1c1c1">请选择物品实际重量，超大超重影响配送</view>
+      <view class="boxs">
+        <block wx:for="{{weight}}" wx:key="index">
+          <view class="box {{weightid==index?'active':''}}" data-id='{{index}}' bindtap='radioButtonTap2'>{{item}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</van-action-sheet>
+<button bindtap="onshw">提交订单</button>
