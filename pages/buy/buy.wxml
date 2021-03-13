@@ -5,8 +5,8 @@
     <text>填写想要购买的商品</text>
   </view>
   <view class="section">
-  <textarea bindinput="bindTextAreaBlur" auto-height placeholder="想买什么，就买什么！" />
-</view>
+    <textarea bindinput="bindTextAreaBlur" auto-height placeholder="想买什么，就买什么！" />
+    </view>
 </view>
 
 <view class="box1 content">
@@ -42,23 +42,42 @@
 <view class="box2 content">
   <text>下单时间</text>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <text space="ensp" style="font-size:30rpx;color:#999999">{{choose_year==''?'立即送出':choose_year}} > </text>
+    <view>
+    <text space="ensp" style="font-size:30rpx;color:#999999">{{choose_year==''?'立即送出':choose_year}}</text>
+    <image src="../image/right.png" class="right"></image>
+  </view>
+
+    
   </picker>
 </view>
 
 <view class="box3 content">
   <view class="aaa">
     <text>优惠金额</text>
-    <text space="ensp" style="font-size:30rpx;color:#999999">暂无可用优惠卷 > </text>
+    <view>
+    <text space="ensp" style="font-size:30rpx;color:#999999">暂无可用优惠卷</text>
+    <image src="../image/right.png" class="right"></image>
+  </view>
+    
   </view>
   <view class="aaa">
     <text>订单保价</text>
-    <input type="number" class="input-right" placeholder="贵重物品建议保价/元 > " placeholder-style="font-size:30rpx;color:#999999;"
-    style="width:317rpx;margin:auto 0"/>
+
+    <view>
+      <text space="ensp" style="font-size:30rpx;color:#999999"
+        bindtap="onBaojia">{{number==0?'贵重物品建议保价':number}}</text>
+      <image src="../image/right.png" class="right"></image>
+    </view>
+    <!-- <input type="number" class="input-right" placeholder="贵重物品建议保价/元 > " placeholder-style="font-size:30rpx;color:#999999;"
+    style="width:317rpx;margin:auto 0"/> -->
   </view>
   <view class="aaa">
     <text>订单备注</text>
-    <text space="ensp" style="font-size:30rpx;color:#999999" bindtap="onBeizhu">{{beizhu==""?'备注说点什么 > ':beizhu}}</text>
+    <view> 
+      <text space="ensp" style="font-size:30rpx;color:#999999" bindtap="onBeizhu">{{beizhu==""?'备注说点什么':beizhu}}</text>
+      <image src="../image/right.png" class="right"></image>
+    </view>
+   
   </view>
 </view>
 

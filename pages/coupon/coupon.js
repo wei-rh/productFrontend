@@ -1,4 +1,4 @@
-// pages/dizhi/dizhi.js
+// pages/coupon/coupon.js
 Page({
 
   /**

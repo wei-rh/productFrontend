@@ -1,20 +1,23 @@
 <!--pages/take/take.wxml-->
 
 <view class="box1 content">
-  <navigator hover-class="none" url="/pages/take/dizhi/dizhi?id=1" class="text1" >
+  <navigator hover-class="none" url="/pages/take/dizhi/dizhi?id=1" class="text1">
     <view class="tops"></view>
     <view class="t1">
       <input disabled="true" type="text" value="{{fadata.name}}" />
     </view>
     <view class="t2">
       <view class="fa">发</view>
-      <input disabled="true" type="text" class="dizhi" placeholder="从哪里取货？" placeholder-style="color:#000" value="{{fadata.dizhi}}"/>
+      <input disabled="true" type="text" class="dizhi" placeholder="从哪里取货？" placeholder-style="color:#000"
+        value="{{fadata.dizhi}}" />
       <navigator hover-class="none" class="changyong">常用</navigator>
     </view>
     <view class="t1">
-      <input disabled="true" type="text" placeholder="点击填写取货信息" placeholder-style="font-size:30rpx" value="{{fadata.tel}}"/>
+      <input disabled="true" type="text" placeholder="点击填写取货信息" placeholder-style="font-size:30rpx"
+        value="{{fadata.tel}}" />
     </view>
   </navigator>
+  
   <navigator hover-class="none" url="/pages/take/dizhi/dizhi?id=2" class="text1">
     <view class="tops1"></view>
     <view class="t1">
@@ -22,41 +25,69 @@
     </view>
     <view class="t2">
       <view class="song">送</view>
-      <input disabled="true" type="text" class="dizhi" placeholder="要送到哪里？" placeholder-style="color:#000" value="{{songdata.dizhi}}"/>
+      <input disabled="true" type="text" class="dizhi" placeholder="要送到哪里？" placeholder-style="color:#000"
+        value="{{songdata.dizhi}}" />
       <navigator hover-class="none" class="changyong">常用</navigator>
     </view>
     <view class="t1">
-      <input disabled="true" type="text" placeholder="点击填写收获信息" placeholder-style="font-size:30rpx" value="{{songdata.name}}"/>
+      <input disabled="true" type="text" placeholder="点击填写收获信息" placeholder-style="font-size:30rpx"
+        value="{{songdata.name}}" />
     </view>
   </navigator>
 </view>
 
 <view class="box2 content" bindtap="onChoice">
   <text>物品信息</text>
-  <text space="ensp" style="font-size:30rpx;color:#999999">{{goodText==""?"点击选择物品信息":goodText}} > </text>
+  <view>
+    
+    <text space="ensp" style="font-size:30rpx;color:#999999">{{goodText==""?"点击选择物品信息":goodText}}</text>
+    <image src="../image/right.png" class="right"></image>
+  </view>
 </view>
+
+
+
+
 <view class="box2 content">
   <text>下单时间</text>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <text space="ensp" style="font-size:30rpx;color:#999999">{{choose_year==''?'立即送出':choose_year}} > </text>
+    <view>
+      <text space="ensp" style="font-size:30rpx;color:#999999">{{choose_year==''?'立即送出':choose_year}}</text>
+      <image src="../image/right.png" class="right"></image>
+    </view>
   </picker>
 </view>
 
 <view class="box3 content">
   <view class="aaa">
     <text>优惠金额</text>
-    <text space="ensp" style="font-size:30rpx;color:#999999">暂无可用优惠卷 > </text>
+    <view>
+      <text space="ensp" style="font-size:30rpx;color:#999999">暂无可用优惠卷</text>
+      <image src="../image/right.png" class="right"></image>
+    </view>
   </view>
   <view class="aaa">
     <text>订单保价</text>
-    <input type="number" class="input-right" placeholder="贵重物品建议保价/元 > " placeholder-style="font-size:30rpx;color:#999999;"
-    style="width:317rpx;margin:auto 0"  bindinput='onBaojia'/>
+
+    <view>
+      <text space="ensp" style="font-size:30rpx;color:#999999"
+        bindtap="onBaojia">{{number==0?'贵重物品建议保价':number}}</text>
+      <image src="../image/right.png" class="right"></image>
+    </view>
+
   </view>
   <view class="aaa">
     <text>订单备注</text>
-    <text space="ensp" style="font-size:30rpx;color:#999999" bindtap="onBeizhu">{{beizhu==""?'备注说点什么 > ':beizhu}}</text>
+    <view>
+      <text space="ensp" style="font-size:30rpx;color:#999999"
+        bindtap="onBeizhu">{{beizhu==""?'备注说点什么':beizhu}}</text>
+      <image src="../image/right.png" class="right"></image>
+    </view>
+
   </view>
 </view>
+
+
 
 <van-action-sheet show="{{ show }}" bind:close="onClose">
   <view class="cont">
@@ -78,7 +109,8 @@
       <view style="font-size:25rpx;color:#c1c1c1">请选择物品实际重量，超大超重影响配送</view>
       <view class="boxs">
         <block wx:for="{{weight}}" wx:key="index">
-          <view class="box {{weightid==index?'active':''}}" data-id='{{index}}' bindtap='radioButtonTap2'>{{item}}</view>
+          <view class="box {{weightid==index?'active':''}}" data-id='{{index}}' bindtap='radioButtonTap2'>{{item}}
+          </view>
         </block>
       </view>
     </view>

@@ -24,8 +24,8 @@ Page({
     fadata: "",
     token: "",
     songdata: "",
+    beizhu:"",
     number: 0,
-    beizhu: "",
     show: false,
     goodText: "",
     goodid: 0,
@@ -117,8 +117,8 @@ Page({
     })
   },
   onBaojia(event) {
-    this.setData({
-      number: event.detail.value
+    wx.navigateTo({
+      url: '/pages/take/baojia/baojia',
     })
   },
   onShow() {

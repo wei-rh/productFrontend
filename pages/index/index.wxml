@@ -29,7 +29,7 @@
     <image src="../image/22.jpg" mode="aspectFit" class="nav-img"></image>
     <view hover-class="none" class="nav-text">我的订单</view>
   </navigator>
-  <navigator hover-class="none" class="nav" url="/pages/index/more/other/other?id=0">
+  <navigator hover-class="none" class="nav" url="/pages/coupon/coupon">
     <image src="../image/33.jpg" mode="aspectFit" class="nav-img"></image>
     <view class="nav-text">优惠劵</view>
   </navigator>

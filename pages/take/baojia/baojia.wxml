@@ -1,0 +1,10 @@
+<!--pages/take/baojia/baojia.wxml-->
+<view class="box3 content">
+  <view class="aaa">
+    <text>保价</text>
+  </view>
+  <view class="section">
+    <input type="number" bindinput="bindNumber" auto-height placeholder="输入保价金额"/>
+  </view>
+</view>
+<button bindtap="onshw">确定</button>

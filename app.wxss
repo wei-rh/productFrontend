@@ -8,3 +8,12 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.right{
+  width: 50rpx;
+  height: 50rpx;
+  /* margin: auto;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 120rpx; */
+  vertical-align:middle;
+}

@@ -7,9 +7,11 @@
     "pages/login/index",
     "pages/buy/buy",
     "pages/printing/printing",
-    "pages/dizhi/dizhi",
     "pages/take/dizhi/dizhi",
-    "pages/take/beizhu/beizhu"
+    "pages/take/beizhu/beizhu",
+    "pages/coupon/coupon",
+    "pages/take/baojia/baojia",
+    "pages/address/address"
   ],
   "window": {
     "backgroundTextStyle": "light",
