@@ -1,10 +1,16 @@
 /* pages/order/orders.wxss */
+page {
+  background-color: #f8f8f8;
+  padding-top: 100rpx;
+}
+
 .top-nav {
   width: 750rpx;
   position: fixed;
   top: 0;
   z-index: 1;
 }
+
 .top-nav-bar {
   display: flex;
   justify-content: space-around;
@@ -13,10 +19,85 @@
   background-color: #fff;
   border-top: 1px solid #e5e5e5;
 }
+
 .top-nav-bar .active {
   /*border-bottom: 2px solid #09bb07;*/
   border-bottom: 2px solid #3a82f8;
 }
+
 .ma-top-120 {
   margin-top: 120rpx;
+}
+
+/* 订单样式 */
+.orders {
+  background-color: #fff;
+  border-radius: 15rpx;
+  width: 670rpx;
+  margin: 20rpx auto;
+}
+
+.order-attribute {
+  height: 100rpx;
+  /* line-height: 100rpx; */
+}
+
+.order-top {
+  padding: 0 35rpx;
+}
+
+.left-text {
+  float: left;
+  margin-top: 35rpx;
+  font-size: 30rpx;
+  color: orange;
+  background-color: #ffeeda;
+  padding: 1rpx 10rpx;
+  border-radius: 10rpx;
+}
+
+.right-text {
+  float: right;
+  font-size: 35rpx;
+  margin-top: 35rpx;
+}
+
+.order-content {
+  /* 超出一行文字自动隐藏 */
+  overflow: hidden;
+  /* //文字隐藏后添加省略号 */
+  text-overflow: ellipsis;
+  /* //强制不换行 */
+  white-space: nowrap;
+
+  padding: 0 35rpx;
+  line-height: 100rpx;
+}
+
+.order-bottom {
+  padding: 0 35rpx;
+
+}
+
+.br {
+  width: 600rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #e9e9eb;
+}
+
+.time-text {
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.time-right {
+  margin-top: 20rpx;
+  float: right;
+  background-color: orange;
+  width: 140rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  text-align: center;
+  border-radius: 15rpx;
 }

@@ -1,0 +1,98 @@
+/* pages/orderDetail/orderDetail.wxss */
+
+page{
+  background-color: #f8f8f8;
+}
+
+.order-attribute {
+  height: 100rpx;
+}
+
+.left-text{
+  float: left;
+  margin-top: 35rpx;
+  font-size: 30rpx;
+  color: orange;
+  background-color: #ffeeda;
+  padding: 1rpx 10rpx;
+  border-radius: 10rpx;
+}
+
+.right-text{
+  float: right;
+  font-size: 35rpx;
+  margin-top: 30rpx;
+}
+.order-content{
+  line-height: 100rpx;
+  text-overflow:ellipsis;
+
+  word-wrap:break-word;
+}
+
+.br {
+  width: 650rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #e9e9eb;
+}
+.time-text{
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #999999;
+}
+
+
+
+/*  */
+.box-attribute {
+  background-color: #fff;
+  padding: 0 50rpx;
+  margin-top: 30rpx;
+}
+.box1-top{
+  font-size: 50rpx;
+  font-weight: 800;
+  height: 150rpx;
+  line-height: 150rpx;
+}
+.box1-bottom{
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.box1-bottom-left{
+  margin-top: 25rpx;
+  width: 300rpx;
+  border-right: 1rpx solid #ccc;
+  height: 40rpx;
+  text-align: center;
+}
+.box1-bottom-right{
+  margin-top: 25rpx;
+  width: 300rpx;
+  height: 40rpx;
+  margin-left: 70rpx;
+}
+
+
+/* 订单信息 */
+.box4{
+  padding-bottom: 50rpx;
+}
+.box4-top{
+  height: 100rpx;
+  font-weight: 800;
+  line-height: 100rpx;
+}
+
+.box4-content{
+  line-height: 70rpx;
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.server{
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}

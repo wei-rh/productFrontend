@@ -1,0 +1,45 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="box1 box-attribute">
+  <view class="box1-top">
+    <text>{{status[orderserver.Status] }}</text>
+  </view>
+  <view class="br"></view>
+  <view class="box1-bottom">
+    <view class="box1-bottom-left">取消订单</view>
+    <view class="box1-bottom-right">{{orderserver.Status==0?'立即付款':'已付款'}}</view>
+  </view>
+</view>
+
+<view class="box2 box-attribute">
+  <view class="order-top order-attribute">
+    <view class="left-text">{{text[type]}}</view>
+  </view>
+  <view class="order-content">
+    <text>发：{{order[0].SendAddress}}</text>
+  </view>
+  <view class="order-content">
+    <text>送：{{order[0].GetAddress}}</text>
+  </view>
+  <view class="order-bottom order-attribute">
+    <text class="time-text">费用合计</text>
+    <view class="right-text">￥30 元</view>
+  </view>
+</view>
+
+<view class="box3 box-attribute" style="display:{{orderserver.Serverid==0?'none':'block'}}">
+  <view class="box4-top">骑手信息</view>
+  <view class="box4-content">骑手名字： {{server.Name}}</view>
+  <view class="server" bindtap="makePhone">联系骑手</view>
+</view>
+
+<view class="box4 box-attribute">
+  <view class="box4-top">订单信息</view>
+  <view class="box4-content">订单编号：{{order[0].ID}}</view>
+  <view class="box4-content">下单时间：{{order[0].CreatedAt}}</view>
+  <view class="box4-content">订单里程： 600m</view>
+  <view class="box4-content">备注信息：{{order[0].Remarks}}</view>
+</view>
+
+<view class="server">联系客服</view>
+
+

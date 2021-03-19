@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
+   
+    "pages/index/index", "pages/orders/orders",
     "pages/deliver/deliver",
     "pages/take/take",
     "pages/myData/myData",
@@ -11,7 +12,8 @@
     "pages/take/beizhu/beizhu",
     "pages/coupon/coupon",
     "pages/take/baojia/baojia",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/orderDetail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

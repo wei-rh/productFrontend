@@ -134,6 +134,8 @@ Page({
     })
   },
   onshw() {
+
+    
     var res = this.data
     if (res.fadata == "" || res.songdata == "" || res.goodText == "") {
       wx.showToast({
@@ -168,14 +170,16 @@ Page({
       success(res) {
         console.log(res)
         if (res.data.error != "") {
-          wx.showToast({
-            title: '下单失败',
-            duration: 2000
-          })
-        } else {
-          wx.showToast({
-            title: '下单成功',
-            duration: 2000
+          wx.showModal({
+            title: '提示',
+            content: '这是一个模态弹窗',
+            success (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
           })
         }
       }
