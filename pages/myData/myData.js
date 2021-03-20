@@ -9,24 +9,56 @@ Page({
    */
   data: {
     userInfo: null,
+    server: "",
+    pattern:true,
   },
-
+  Pattern(){
+    this.setData({pattern:!this.data.pattern}) 
+    app.globalData.pattern = this.data.pattern
+  },
+  //导航栏
+  switchSlider: function (e) {
+    this.setData({
+      current: e.target.dataset.index
+    })
+    this.onShow()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-   
+    var that = this
+    wx.getStorage({
+      key: 'token',
+      success(res) {
+        //获取骑手账号
+        wx.request({
+          url: app.globalData.url+'/serverexist',
+          header: {
+            Authorization: "Bearer " + res.data
+          },
+          success(res) {
+            console.log(res)
+            that.setData({
+              server:res.data.server
+            })
+          }
+        })
+      }
+    })
+
+    this.getInfo()
+    if (this.data.userInfo == null) {
+      wx.navigateTo({
+        url: '../login/index',
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getInfo()
-    if(this.data.userInfo==null){
-      wx.navigateTo({
-        url: '../login/index',
-      })
-    }
   },
 
   /**

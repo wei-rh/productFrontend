@@ -1,80 +1,184 @@
 <!--pages/order/orders.wxml-->
-<view class="top-nav">
-  <view class="top-nav-bar">
-    <view class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">待支付</view>
-    <view class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">待接单</view>
-    <view class="{{current == 2 ? 'active' : ''}}" catchtap="switchSlider" data-index="2">进行中</view>
-    <view class="{{current == 3 ? 'active' : ''}}" catchtap="switchSlider" data-index="3">已完成</view>
-    <view class="{{current == 4 ? 'active' : ''}}" catchtap="switchSlider" data-index="4">已取消</view>
+
+<!-- 用户模式 -->
+<view style="display:{{pattern?'block':'none'}}">
+  <view class="top-nav">
+    <view class="top-nav-bar">
+      <view class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">待支付</view>
+      <view class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">待接单</view>
+      <view class="{{current == 2 ? 'active' : ''}}" catchtap="switchSlider" data-index="2">进行中</view>
+      <view class="{{current == 3 ? 'active' : ''}}" catchtap="switchSlider" data-index="3">已完成</view>
+      <view class="{{current == 4 ? 'active' : ''}}" catchtap="switchSlider" data-index="4">已取消</view>
+    </view>
   </view>
-</view>
-<block wx:for="{{orders}}" wx:key="item">
-  <block wx:for="{{item}}" wx:key="idx" wx:for-item="pro">
-    <view style="display:{{pro.TakeServer?'block':'none'}}">
-      <navigator hover-class="none" url="/pages/orderDetail/orderDetail?id={{pro.ID}}&type=onetakeorder" class="orders" style="display:{{pro.TakeServer.Status==current?'block':'none'}}">
-        <view class="order-top order-attribute">
-          <view class="left-text">帮我取</view>
-          <view class="right-text">{{status[pro.TakeServer.Status]}}</view>
-        </view>
-        <view class="br"></view>
-        <view class="order-content order-attribute">
-          <text>发：{{pro.SendAddress}}</text>
-        </view>
-        <view class="order-content order-attribute">
-          <text>送：{{pro.GetAddress}}</text>
-        </view>
-        <view class="br"></view>
-        <view class="order-bottom order-attribute">
-          <text class="time-text">{{
-          pro.CreatedAt}}</text>
-          <view class="time-right">{{pro.TakeServer.Status==0?'去支付':'已支付'}}</view>
-        </view>
-      </navigator>
-    </view>
+  <block wx:for="{{orders}}" wx:key="item">
+    <block wx:for="{{item}}" wx:key="idx" wx:for-item="pro">
+      <view style="display:{{pro.TakeServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
+        data-type="take" data-status="{{pro.TakeServer.Status}}">
+        <navigator hover-class="none" url="/pages/orderDetail/orderDetail?id={{pro.ID}}&type=onetakeorder"
+          class="orders" style="display:{{pro.TakeServer.Status==current?'block':'none'}}">
+          <view class="order-top order-attribute">
+            <view class="left-text">帮我取</view>
+            <view class="center-text">{{pro.Goods}}</view>
 
-    <view style="display:{{pro.BuyServer?'block':'none'}}">
-      <navigator hover-class="none" url="/pages/orderDetail/orderDetail?id={{pro.ID}}&type=onebuyorder" class="orders" style="display:{{pro.BuyServer.Status==current?'block':'none'}}">
-        <view class="order-top order-attribute">
-          <view class="left-text">帮我买</view>
-          <view class="right-text">{{status[pro.BuyServer.Status]}}</view>
-        </view>
-        <view class="br"></view>
-        <view class="order-content order-attribute">
-          <text>发：{{pro.SendAddress}}</text>
-        </view>
-        <view class="order-content order-attribute">
-          <text>送：{{pro.GetAddress}}</text>
-        </view>
-        <view class="br"></view>
-        <view class="order-bottom order-attribute">
-          <text class="time-text">{{
+            <view class="right-text">{{status[pro.TakeServer.Status]}}</view>
+          </view>
+          <view class="br"></view>
+          <view class="order-content order-attribute">
+            <text>发：{{pro.SendAddress}}</text>
+          </view>
+          <view class="order-content order-attribute">
+            <text>送：{{pro.GetAddress}}</text>
+          </view>
+          <view class="br"></view>
+          <view class="order-bottom order-attribute">
+            <text class="time-text">{{
           pro.CreatedAt}}</text>
-          <view class="time-right">{{pro.BuyServer.Status==0?'去支付':'已支付'}}</view>
-        </view>
-      </navigator>
+            <view class="time-right">{{pro.TakeServer.Status==0?'去支付':'已支付'}}</view>
+          </view>
+        </navigator>
+      </view>
 
-    </view>
-
-    <view style="display:{{pro.DeliverServer?'block':'none'}}">
-      <navigator hover-class="none"url="/pages/orderDetail/orderDetail?id={{pro.ID}}&type=onedeliverorder" class="orders" style="display:{{pro.DeliverServer.Status==current?'block':'none'}}">
-        <view class="order-top order-attribute">
-          <view class="left-text">帮我送</view>
-          <view class="right-text">{{status[pro.DeliverServer.Status]}}</view>
-        </view>
-        <view class="br"></view>
-        <view class="order-content order-attribute">
-          <text>发：{{pro.SendAddress}}</text>
-        </view>
-        <view class="order-content order-attribute">
-          <text>送：{{pro.GetAddress}}</text>
-        </view>
-        <view class="br"></view>
-        <view class="order-bottom order-attribute">
-          <text class="time-text">{{
+      <view style="display:{{pro.BuyServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
+        data-type="buy" data-status="{{pro.BuyServer.Status}}">
+        <navigator hover-class="none" url="/pages/orderDetail/orderDetail?id={{pro.ID}}&type=onebuyorder" class="orders"
+          style="display:{{pro.BuyServer.Status==current?'block':'none'}}">
+          <view class="order-top order-attribute">
+            <view class="left-text">帮我买 </view>
+            <view class="center-text">{{pro.Context}} </view>
+            <view class="right-text">{{status[pro.BuyServer.Status]}}</view>
+          </view>
+          <view class="br"></view>
+          <view class="order-content order-attribute">
+            <text>发：{{pro.SendAddress}}</text>
+          </view>
+          <view class="order-content order-attribute">
+            <text>送：{{pro.GetAddress}}</text>
+          </view>
+          <view class="br"></view>
+          <view class="order-bottom order-attribute">
+            <text class="time-text">{{
           pro.CreatedAt}}</text>
-          <view class="time-right">{{pro.DeliverServer.Status==0?'去支付':'已支付'}}</view>
-        </view>
-      </navigator>
-    </view>
+            <view class="time-right">{{pro.BuyServer.Status==0?'去支付':'已支付'}}</view>
+          </view>
+        </navigator>
+
+      </view>
+
+      <view style="display:{{pro.DeliverServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
+        data-type="deliver" data-status="{{pro.DeliverServer.Status}}">
+        <navigator hover-class="none" url="/pages/orderDetail/orderDetail?id={{pro.ID}}&type=onedeliverorder"
+          class="orders" style="display:{{pro.DeliverServer.Status==current?'block':'none'}}">
+          <view class="order-top order-attribute">
+            <view class="left-text">帮我送 </view>
+            <view class="center-text">{{pro.Goods}}</view>
+            <view class="right-text">{{status[pro.DeliverServer.Status]}}</view>
+          </view>
+          <view class="br"></view>
+          <view class="order-content order-attribute">
+            <text>发：{{pro.SendAddress}}</text>
+          </view>
+          <view class="order-content order-attribute">
+            <text>送：{{pro.GetAddress}}</text>
+          </view>
+          <view class="br"></view>
+          <view class="order-bottom order-attribute">
+            <text class="time-text">{{
+          pro.CreatedAt}}</text>
+            <view class="time-right">{{pro.DeliverServer.Status==0?'去支付':'已支付'}}</view>
+          </view>
+        </navigator>
+      </view>
+    </block>
   </block>
-</block>
+</view>
+
+<!-- 骑手模式 -->
+<view style="display:{{pattern?'none':'block'}}">
+  <view class="top-nav">
+    <view class="top-nav-bar">
+      <view class="{{current2 == 0 ? 'active' : ''}}" catchtap="switchSlider2" data-index="0">全部</view>
+      <view class="{{current2 == 1 ? 'active' : ''}}" catchtap="switchSlider2" data-index="1">进行中</view>
+      <view class="{{current2 == 2 ? 'active' : ''}}" catchtap="switchSlider2" data-index="2">已完成</view>
+    </view>
+  </view>
+
+  <block wx:for="{{orders2}}" wx:key="item">
+    <block wx:for="{{item}}" wx:key="idx" wx:for-item="pro">
+      <view style="display:{{pro.TakeServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
+        data-type="take" data-status="{{pro.TakeServer.Status}}">
+        <navigator hover-class="none"
+          class="orders">
+          <view class="order-top order-attribute">
+            <view class="left-text">帮我取</view>
+            <view class="center-text">{{pro.Goods}}</view>
+
+            <view class="right-text">{{status[pro.TakeServer.Status]}}</view>
+          </view>
+          <view class="br"></view>
+          <view class="order-content order-attribute">
+            <text>发：{{pro.SendAddress}}</text>
+          </view>
+          <view class="order-content order-attribute">
+            <text>送：{{pro.GetAddress}}</text>
+          </view>
+          <view class="br"></view>
+          <view class="order-bottom order-attribute">
+            <text class="time-text">{{
+          pro.CreatedAt}}</text>
+            <view class="{{current2==2?'time-right-none':'time-right'}}">{{status2[current2]}}</view>
+          </view>
+        </navigator>
+      </view>
+
+      <view style="display:{{pro.BuyServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
+        data-type="buy" data-status="{{pro.BuyServer.Status}}">
+        <navigator hover-class="none" class="orders">
+          <view class="order-top order-attribute">
+            <view class="left-text">帮我买 </view>
+            <view class="center-text">{{pro.Context}} </view>
+            <view class="right-text">{{status[pro.BuyServer.Status]}}</view>
+          </view>
+          <view class="br"></view>
+          <view class="order-content order-attribute">
+            <text>发：{{pro.SendAddress}}</text>
+          </view>
+          <view class="order-content order-attribute">
+            <text>送：{{pro.GetAddress}}</text>
+          </view>
+          <view class="br"></view>
+          <view class="order-bottom order-attribute">
+            <text class="time-text">{{
+          pro.CreatedAt}}</text>
+            <view class="{{current2==2?'time-right-none':'time-right'}}">{{status2[current2]}}</view>
+          </view>
+        </navigator>
+
+      </view>
+
+      <view style="display:{{pro.DeliverServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
+        data-type="deliver" data-status="{{pro.DeliverServer.Status}}">
+        <navigator hover-class="none" class="orders">
+          <view class="order-top order-attribute">
+            <view class="left-text">帮我送 </view>
+            <view class="center-text">{{pro.Goods}}</view>
+            <view class="right-text">{{status[pro.DeliverServer.Status]}}</view>
+          </view>
+          <view class="br"></view>
+          <view class="order-content order-attribute">
+            <text>发：{{pro.SendAddress}}</text>
+          </view>
+          <view class="order-content order-attribute">
+            <text>送：{{pro.GetAddress}}</text>
+          </view>
+          <view class="br"></view>
+          <view class="order-bottom order-attribute">
+            <text class="time-text">{{
+          pro.CreatedAt}}</text>
+            <view class="{{current2==2?'time-right-none':'time-right'}}">{{status2[current2]}}</view>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </block>
+</view>

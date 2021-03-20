@@ -10,7 +10,8 @@ Page({
     orderserver:[],
     server:"",
     text:{"onetakeorder":"帮我取","onebuyorder":"帮我买","onedeliverorder":"帮我送"},
-    order: ""
+    order: "",
+    token:""
     
   },
 
@@ -32,6 +33,7 @@ Page({
       key: 'token',
       success(res) {
         var token = res.data
+        that.setData({token:res.data})
         wx.request({
           url: app.globalData.url + "/" + options.type,
           data: {
@@ -71,4 +73,52 @@ Page({
       phoneNumber: this.data.server.Tel //仅为示例，并非真实的电话号码
     })
   },
+  //取消订单
+  Cancel(e){
+    var that = this
+    var type= this.data.type=="onetakeorder"?'take':(this.data.type=='onebuyorder'?'buy':'deliver')
+    console.log(type)
+    wx.showModal({
+      title:"提示",
+      content:"确定取消",
+      success(res){
+        if(res.confirm){
+          if(that.data.orderserver.Status>=2){
+            wx.showToast({
+              title: '取消失败',
+              icon: 'none',
+              duration: 2000
+            })
+            return
+          }
+          wx.request({
+            url: app.globalData.url+"/cancelorder",
+            data:{
+              id: that.data.orderserver.ID,
+              type: type
+            },
+            header: {
+              Authorization: "Bearer " + that.data.token
+            },
+            success(res){
+              console.log(res)
+              if(res.data.error=="成功"){
+                that.onShow()
+                wx.showToast({
+                  title: '取消成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+                wx.navigateBack({
+                  delta: 0,
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  }
+
+
 })

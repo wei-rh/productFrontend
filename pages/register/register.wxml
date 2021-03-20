@@ -1,0 +1,17 @@
+<!--pages/register/register.wxml-->
+
+<view class="box3 content">
+  <view class="aaa">
+    <text>姓名</text>
+    <input type="text" placeholder="姓名" bindinput='onName'/>
+  </view>
+  <view class="aaa">
+    <text>手机号</text>
+    <input type="text" placeholder="手机号" bindinput='onPhone'/>
+  </view>
+  <view class="aaa">
+    <text>邀请码</text>
+    <input type="text" placeholder="邀请码" value="{{number}}" bindinput='onNumber' />
+  </view>
+</view>
+<button bindtap="submit">确定</button>

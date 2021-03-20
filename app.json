@@ -1,10 +1,12 @@
 {
   "pages": [
-   
-    "pages/index/index", "pages/orders/orders",
+
+    
+    "pages/index/index","pages/orders/orders",
+    "pages/myData/myData",
+    "pages/register/register",
     "pages/deliver/deliver",
     "pages/take/take",
-    "pages/myData/myData",
     "pages/login/index",
     "pages/buy/buy",
     "pages/printing/printing",
@@ -13,7 +15,8 @@
     "pages/coupon/coupon",
     "pages/take/baojia/baojia",
     "pages/address/address",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/other/other"
   ],
   "window": {
     "backgroundTextStyle": "light",

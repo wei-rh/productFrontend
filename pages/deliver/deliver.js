@@ -4,7 +4,7 @@ const date = new Date();
 const year = ['今天', '明天', '后天'];
 const hours = [];
 const minutes = [];
-
+const app  = getApp()
 //获取小时
 for (let i = 0; i < 24; i++) {
   if (i < 10) {
@@ -161,15 +161,50 @@ Page({
       },
       success(res) {
         console.log(res)
-        if (res.data.error != "") {
-          wx.showToast({
-            title: '下单失败',
-            duration: 2000
-          })
-        } else {
-          wx.showToast({
-            title: '下单成功',
-            duration: 2000
+        if(res.data.error==""){
+          var ordertype = res.data.deliverserverbyuser
+          wx.showModal({
+            title: '提示',
+            content: '是否立即支付',
+            success(res) {
+              if (res.confirm) {
+                wx.request({
+                  url:  app.globalData.url+"/statusone",
+                  data:{
+                    id:ordertype.ID,
+                    type:"deliver"
+                  },
+                  header: {
+                    Authorization: "Bearer " + res.token
+                  },
+                  success(res){
+                    console.log(res)
+                  }
+                })
+                wx.showToast({
+                  title: '支付成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+                wx.navigateBack({
+                  delta: 0,
+                })
+                wx.showToast({
+                  title: '下单成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+              } else if (res.cancel) {
+                wx.showToast({
+                  title: '下单成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+                wx.navigateBack({
+                  delta: 0,
+                })
+              }
+            }
           })
         }
       }

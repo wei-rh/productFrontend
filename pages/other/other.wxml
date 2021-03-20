@@ -1,0 +1,17 @@
+<!--pages/other/other.wxml-->
+
+
+<view style="display:{{id==1?'block':'none'}}">
+
+  常见问题：
+    1. 无人接单会怎么办？
+  用户根据不同类型的订单下单，当订单超过一定时间，仍无任何人接单，订单会自动取消，退款预计一到三个天退还
+
+</view>
+
+
+<view style="display:{{id==2?'block':'none'}}">
+
+  请联系微信客服：1837xxxx183
+  
+</view>

@@ -1,4 +1,5 @@
 // pages/take/take.js
+const app = getApp()
 var util = require('../../utils/util.js');
 const date = new Date();
 const year = ['今天', '明天', '后天'];
@@ -122,7 +123,6 @@ Page({
     })
   },
   onShow() {
-    console.log("onshow")
     var that = this
     wx.getStorage({
       key: 'token',
@@ -169,15 +169,49 @@ Page({
       },
       success(res) {
         console.log(res)
-        if (res.data.error != "") {
+        if(res.data.error==""){
+          var ordertype = res.data.takeserverbyuser
           wx.showModal({
             title: '提示',
-            content: '这是一个模态弹窗',
-            success (res) {
+            content: '是否立即支付',
+            success(res) {
               if (res.confirm) {
-                console.log('用户点击确定')
+                wx.request({
+                  url:  app.globalData.url+"/statusone",
+                  data:{
+                    id:ordertype.ID,
+                    type:"take"
+                  },
+                  header: {
+                    Authorization: "Bearer " + res.token
+                  },
+                  success(res){
+                    console.log(res)
+                  }
+                })
+                
+                wx.showToast({
+                  title: '支付成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+                wx.navigateBack({
+                  delta: 0,
+                })
+                wx.showToast({
+                  title: '下单成功',
+                  icon: 'none',
+                  duration: 2000
+                })
               } else if (res.cancel) {
-                console.log('用户点击取消')
+                wx.showToast({
+                  title: '下单成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+                wx.navigateBack({
+                  delta: 0,
+                })
               }
             }
           })

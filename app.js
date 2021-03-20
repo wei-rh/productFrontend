@@ -20,6 +20,7 @@ App({
               data: resp.data.token,
               key: 'token',
             })
+            
           }
         })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -47,6 +48,7 @@ App({
   },
   globalData: {
     url:"http://localhost:8080",
-    userInfo: null
+    userInfo: null,
+    pattern:false
   }
 })

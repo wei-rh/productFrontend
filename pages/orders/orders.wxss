@@ -55,7 +55,12 @@ page {
   padding: 1rpx 10rpx;
   border-radius: 10rpx;
 }
-
+.center-text{
+  float: left;
+  font-size: 30rpx;
+  margin-top: 35rpx;
+  margin-left: 20rpx;
+}
 .right-text {
   float: right;
   font-size: 35rpx;
@@ -95,6 +100,16 @@ page {
   margin-top: 20rpx;
   float: right;
   background-color: orange;
+  width: 140rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  text-align: center;
+  border-radius: 15rpx;
+}
+.time-right-none {
+  margin-top: 20rpx;
+  float: right;
+  background-color: #999;
   width: 140rpx;
   height: 55rpx;
   line-height: 55rpx;
