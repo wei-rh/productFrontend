@@ -25,6 +25,7 @@ Page({
     token:"",
     songdata:"",
     beizhu:"",
+    number:0,
     show: false,
     goodText: "",
     goodid: 0,
@@ -36,8 +37,21 @@ Page({
     multiIndex: ['', '', ''],
     choose_year: '',  //修改的下单时间
   },
+  onBaojia(event) {
+    wx.navigateTo({
+      url: '/pages/take/baojia/baojia',
+    })
+  },
   onLoad: function (options) {
-    this.onSetTime()
+    var that = this
+    wx.getStorage({
+      key: 'token',
+      success(res) {
+        that.setData({
+          token: res.data
+        })
+      }
+    })
   },
   onClose() {
     this.setData({
@@ -116,16 +130,9 @@ Page({
     })
   },
   onShow() {
+    this.onSetTime()
     console.log("onshow")
-    var that = this
-    wx.getStorage({
-      key: 'token',
-      success(res) {
-        that.setData({
-          token: res.data
-        })
-      }
-    })
+  
   },
   onshw() {
     var res = this.data

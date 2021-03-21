@@ -4,13 +4,15 @@
 
 
 <!-- 用户模式 -->
-<view style="display:{{pattern?'block':'none'}}">
+<!-- <view style="display:{{pattern?'block':'none'}}"> -->
   <view class="containers">
     <view class="img-text">
       <image src="{{userInfo==null?'../image/点击登录.png':userInfo.avatarUrl}}" class="userinfo-avatar" mode="cover">
       </image>
       <view class="userinfo-nickname">{{userInfo==null?'默认用户':userInfo.nickName}}</view>
-      <view class="pattern" bindtap="Pattern">切换骑手模式</view>
+      <!-- 用户模式 -->
+      <view style="display:{{server==''?'none':'block'}}" class="pattern" bindtap="Pattern">{{pattern?'用户模式':'骑手模式'}}</view>
+      <!-- 骑手模式 -->
     </view>
     <navigator hover-class="none" class="gongneng" url="/pages/address/address">我的地址</navigator>
     <navigator hover-class="none" class="gongneng" url="../orders/orders">我的订单</navigator>
@@ -19,23 +21,6 @@
     <navigator hover-class="none" class="gongneng" url="/pages/other/other?id=2">联系客服</navigator>
     <navigator hover-class="none" class="gongneng" url="/pages/register/register">填写邀请码</navigator>
   </view>
-</view>
+<!-- </view> -->
 
 
-<!-- 骑手模式 -->
-<view style="display:{{!pattern?'block':'none'}}">
-  <view class="containers">
-    <view class="img-text">
-      <image src="{{userInfo==null?'../image/点击登录.png':userInfo.avatarUrl}}" class="userinfo-avatar" mode="cover">
-      </image>
-      <view class="userinfo-nickname">{{server.Name}}</view>
-      <view class="pattern" bindtap="Pattern">切换用户模式</view>
-      <navigator hover-class="none" class="gongneng" url="/pages/address/address">我的地址</navigator>
-    <navigator hover-class="none" class="gongneng" url="../orders/orders">我的订单</navigator>
-    <navigator hover-class="none" class="gongneng" url="/pages/coupon/coupon">我的优惠劵</navigator>
-    <navigator hover-class="none" class="gongneng" url="/pages/other/other?id=1">用户指南</navigator>
-    <navigator hover-class="none" class="gongneng" url="/pages/other/other?id=2">联系客服</navigator>
-    <navigator hover-class="none" class="gongneng" url="/pages/register/register">填写邀请码</navigator>
-    </view>
-  </view>
-</view>

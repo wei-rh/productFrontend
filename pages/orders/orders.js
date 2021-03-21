@@ -11,8 +11,8 @@ Page({
     orders: [],
     orders2: [],
     status: ['待支付', '待接单', '进行中', '已完成', '已取消'],
-    status2:['接单','已接单','已完成'],
-    pattern: true,
+    status2: ['接单', '确认', '已完成'],
+    pattern: "",
     current2: 0,
 
   },
@@ -30,79 +30,72 @@ Page({
     this.onShow()
   },
   onLoad() {
-    this.setData({
-      pattern: app.globalData.pattern
+    var that = this
+    wx.getStorage({
+      key: 'token',
+      success(res) {
+        var token = res.data
+        that.setData({
+          token: res.data
+        })
+        wx.request({
+          url: 'http://localhost:8080/allorder',
+          header: {
+            Authorization: "Bearer " + token
+          },
+          success(res) {
+            console.log(res)
+            var arrary = []
+            arrary.push(res.data.buyorder, res.data.takeorder, res.data.deliverorder)
+            that.setData({
+              orders: arrary
+            })
+          }
+        })
+      }
     })
-    if (this.data.pattern) {
-      var that = this
-      wx.getStorage({
-        key: 'token',
-        success(res) {
-          var token = res.data
-          that.setData({
-            token: res.data
-          })
-          wx.request({
-            url: 'http://localhost:8080/allorder',
-            header: {
-              Authorization: "Bearer " + token
-            },
-            success(res) {
-              console.log(res)
-              var arrary = []
-              arrary.push(res.data.buyorder, res.data.takeorder, res.data.deliverorder)
-              that.setData({
-                orders: arrary
-              })
-            }
-          })
-        }
-      })
-    }
 
 
   },
   onShow() {
-
+    this.setData({
+      pattern: app.globalData.pattern
+    })
     var pattern = this.data.pattern
     var current2 = this.data.current2
     var that = this
+    var arrary = ['/allstatusone', "/allstatustwo", "/allstatusthree"]
     if (!pattern) {
-      switch (current2) {
-        case 0:
-          console.log("0")
-          wx.request({
-            url: app.globalData.url + "/allstatusone",
-            header: {
-              Authorization: "Bearer " + this.data.token
-            },
-            success(res) {
-              console.log(res)
-              var arrary = []
-              arrary.push(res.data.buy, res.data.take, res.data.deliver)
-              that.setData({
-                orders2: arrary
-              })
-            }
+      wx.request({
+        url: app.globalData.url + arrary[current2],
+        header: {
+          Authorization: "Bearer " + this.data.token
+        },
+        success(res) {
+          console.log(res)
+          var arrary = []
+          arrary.push(res.data.buy, res.data.take, res.data.deliver)
+          that.setData({
+            orders2: arrary
           })
-          break
-        case 1:
-          console.log("1")
-          break
-        case 2:
-          console.log("2")
-          break
-      }
+        }
+      })
 
 
     }
-
-
-
-
   },
   // 长按删除订单
   longPress: function (e) {
+    if(this.data.current==3||this.data.current2==2){
+      wx.showToast({
+        title: '不能删除',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+
+
     var event = e.currentTarget.dataset
     console.log(event)
     var that = this
@@ -143,7 +136,54 @@ Page({
         }
       }
     })
+  },
+
+  //点击接单或者点击确定
+  OrderReceiving(e) {
+    var that = this
+    var current2 = this.data.current2
+    var ordertype = e.currentTarget.dataset.type
+    var orderid = e.currentTarget.dataset.id
+    console.log(current2)
+    console.log(ordertype)
+    console.log(orderid)
+
+    wx.request({
+      url: app.globalData.url + "/orderreceiving",
+      header: {
+        Authorization: "Bearer " + this.data.token
+      },
+      data: {
+        id: orderid,
+        type: ordertype,
+        current2: current2
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.error == "") {
+          if (current2 == 0) {
+            wx.showToast({
+              title: '接单成功',
+              icon: 'none',
+              duration: 2000
+            })
+          } else {
+            wx.showToast({
+              title: '确认成功',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+          that.onShow()
+        }
+      }
+    })
+
+
+
+
   }
+
 
 
 })

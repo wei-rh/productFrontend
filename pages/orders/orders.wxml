@@ -107,7 +107,7 @@
     <block wx:for="{{item}}" wx:key="idx" wx:for-item="pro">
       <view style="display:{{pro.TakeServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
         data-type="take" data-status="{{pro.TakeServer.Status}}">
-        <navigator hover-class="none"
+        <view hover-class="none"
           class="orders">
           <view class="order-top order-attribute">
             <view class="left-text">帮我取</view>
@@ -126,14 +126,14 @@
           <view class="order-bottom order-attribute">
             <text class="time-text">{{
           pro.CreatedAt}}</text>
-            <view class="{{current2==2?'time-right-none':'time-right'}}">{{status2[current2]}}</view>
+            <view class="{{current2==2?'time-right-none':'time-right'}}" bindtap="OrderReceiving" data-type="take" data-id="{{pro.ID}}">{{status2[current2]}}</view>
           </view>
-        </navigator>
+        </view>
       </view>
 
       <view style="display:{{pro.BuyServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
         data-type="buy" data-status="{{pro.BuyServer.Status}}">
-        <navigator hover-class="none" class="orders">
+        <view hover-class="none" class="orders">
           <view class="order-top order-attribute">
             <view class="left-text">帮我买 </view>
             <view class="center-text">{{pro.Context}} </view>
@@ -150,15 +150,15 @@
           <view class="order-bottom order-attribute">
             <text class="time-text">{{
           pro.CreatedAt}}</text>
-            <view class="{{current2==2?'time-right-none':'time-right'}}">{{status2[current2]}}</view>
+            <view class="{{current2==2?'time-right-none':'time-right'}}" bindtap="OrderReceiving" data-type="buy" data-id="{{pro.ID}}">{{status2[current2]}}</view>
           </view>
-        </navigator>
+        </view>
 
       </view>
 
       <view style="display:{{pro.DeliverServer?'block':'none'}}" bindlongpress='longPress' data-id="{{pro.ID}}"
         data-type="deliver" data-status="{{pro.DeliverServer.Status}}">
-        <navigator hover-class="none" class="orders">
+        <view hover-class="none" class="orders">
           <view class="order-top order-attribute">
             <view class="left-text">帮我送 </view>
             <view class="center-text">{{pro.Goods}}</view>
@@ -175,9 +175,9 @@
           <view class="order-bottom order-attribute">
             <text class="time-text">{{
           pro.CreatedAt}}</text>
-            <view class="{{current2==2?'time-right-none':'time-right'}}">{{status2[current2]}}</view>
+            <view class="{{current2==2?'time-right-none':'time-right'}}" bindtap="OrderReceiving" data-type="deliver" data-id="{{pro.ID}}" >{{status2[current2]}}</view>
           </view>
-        </navigator>
+        </view>
       </view>
     </block>
   </block>

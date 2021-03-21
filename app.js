@@ -49,6 +49,6 @@ App({
   globalData: {
     url:"http://localhost:8080",
     userInfo: null,
-    pattern:false
+    pattern:true
   }
 })

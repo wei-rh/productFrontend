@@ -10,7 +10,7 @@ Page({
   data: {
     userInfo: null,
     server: "",
-    pattern:true,
+    pattern:"",
   },
   Pattern(){
     this.setData({pattern:!this.data.pattern}) 
@@ -59,6 +59,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({pattern:app.globalData.pattern}) 
+
   },
 
   /**

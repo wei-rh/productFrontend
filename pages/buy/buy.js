@@ -28,10 +28,16 @@ Page({
     context:"",
     token:"",
     show: false,
+    number:0,
     time: '',
     multiArray: [year, hours, minutes],
     multiIndex: ['', '', ''],
     choose_year: '',  //修改的下单时间
+  },
+  onBaojia(event) {
+    wx.navigateTo({
+      url: '/pages/take/baojia/baojia',
+    })
   },
   onLoad: function (options) {
     this.onSetTime()
